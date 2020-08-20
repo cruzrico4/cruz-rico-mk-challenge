@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"cruzricomkchallenge4a1a82dc": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

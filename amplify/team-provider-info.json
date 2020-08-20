@@ -1,0 +1,20 @@
+{
+    "vsc": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cruzricomkchallenge-vsc-123603-authRole",
+            "UnauthRoleArn": "arn:aws:iam::579890535114:role/amplify-cruzricomkchallenge-vsc-123603-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::579890535114:role/amplify-cruzricomkchallenge-vsc-123603-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-cruzricomkchallenge-vsc-123603-deployment",
+            "UnauthRoleName": "amplify-cruzricomkchallenge-vsc-123603-unauthRole",
+            "StackName": "amplify-cruzricomkchallenge-vsc-123603",
+            "StackId": "arn:aws:cloudformation:us-east-2:579890535114:stack/amplify-cruzricomkchallenge-vsc-123603/39828740-e253-11ea-aa88-0acbc2d9c67a",
+            "AmplifyAppId": "d9dwh2ftw4dnx"
+        },
+        "categories": {
+            "auth": {
+                "cruzricomkchallenge4a1a82dc": {}
+            }
+        }
+    }
+}
