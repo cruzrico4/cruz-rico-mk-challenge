@@ -27,6 +27,7 @@ function App() {
         display="flex"
         justifyContent="center"
         m="5%">
+        <AmplifySignOut />
         <LoginWindow />
       </Box>
     </ThemeProvider>
