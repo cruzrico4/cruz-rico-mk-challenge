@@ -5,8 +5,10 @@ import Spacing from '@material-ui/system'
 
 import LoginWindow from './Login/LoginWindow.js'
 import { createMuiTheme, Typography } from '@material-ui/core'
-import {sizing} from '@material-ui/system'
+import { sizing } from '@material-ui/system'
 import { ThemeProvider } from '@material-ui/core';
+
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 //Padding between elements
 const theme = createMuiTheme({
@@ -17,22 +19,18 @@ const theme = createMuiTheme({
 });
 
 
-export class App extends React.Component{
-
-  render() {
-    return (
+function App() {
+  return (
     <ThemeProvider theme={theme}>
-      
-      <Box 
+
+      <Box
         display="flex"
         justifyContent="center"
         m="5%">
-        <LoginWindow/>
+        <LoginWindow />
       </Box>
     </ThemeProvider>
-    
-    );
-  }
+  );
 }
 
-export default App;
+export default withAuthenticator(App);

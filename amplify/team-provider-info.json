@@ -16,5 +16,23 @@
                 "cruzricomkchallenge4a1a82dc": {}
             }
         }
+    },
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cruzricomkchallenge-dev-221558-authRole",
+            "UnauthRoleArn": "arn:aws:iam::579890535114:role/amplify-cruzricomkchallenge-dev-221558-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::579890535114:role/amplify-cruzricomkchallenge-dev-221558-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-cruzricomkchallenge-dev-221558-deployment",
+            "UnauthRoleName": "amplify-cruzricomkchallenge-dev-221558-unauthRole",
+            "StackName": "amplify-cruzricomkchallenge-dev-221558",
+            "StackId": "arn:aws:cloudformation:us-west-2:579890535114:stack/amplify-cruzricomkchallenge-dev-221558/3ce6bd10-e2a4-11ea-b2be-0a54494481e5",
+            "AmplifyAppId": "dwapiw6qgsfp"
+        },
+        "categories": {
+            "auth": {
+                "cruzricomkchallenge4a1a82dc": {}
+            }
+        }
     }
 }
