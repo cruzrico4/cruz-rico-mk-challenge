@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,%7CQuicksand:+300,400,600');
+
+:root {
+  --amplify-primary-color: #0074d9;
+  --amplify-primary-tint: rgb(0, 148, 202);
+  --amplify-primary-shade: #0074d9;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
