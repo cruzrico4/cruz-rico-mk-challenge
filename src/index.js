@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Amplify from 'aws-amplify';
 import config from './aws-exports';
+import Amplify, { API } from 'aws-amplify';
+import awsconfig from './aws-exports';
 
-Amplify.configure(config);
+// Amplify.configure(config);
+Amplify.configure(awsconfig);
+
+API.get('SendMessage-API', 
+  'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage').then(res=>{
+    console.log(res)
+});
 
 ReactDOM.render(
   <React.StrictMode>

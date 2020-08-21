@@ -4,6 +4,8 @@ import { Typography, TextField, Button } from '@material-ui/core';
 import { makeStyles, withTheme } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
+import axios from 'axios';
+
 
 //Style
 // const useStyles = makeStyles((theme) => ({
@@ -68,20 +70,40 @@ function ContactForm() {
           rows={5} />
       </Box>
       <Box pt={4} >
-        <StyledButton type="submit" endIcon={<SendIcon />} >Send</StyledButton>
+        <StyledButton type="submit" endIcon={<SendIcon />} onClick={handleSubmit} >Send</StyledButton>
       </Box>
     </Box>
   )
 }
 
-// async function handleSubmit(event) {
-//   event.preventDefault();
-//   const { name, message } = this.state;
-//   await axios.post(
-//     'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',
-//     { key1: `${name}, ${message}` }
-//   );
+// export function handleSubmit(item){
+//   var request = fetch(`API-URL?desc=${item}`,{
+//       method: 'POST',
+//       headers:{
+//           'Content-Type': 'application/json',
+//           'x-api-key': 'API-KEY'
+//       }
+//   })
+//   .then(response => response.json())
+//   .then((data) => { return data; } )
+//   .catch(error => console.log('Error while adding:', error));
+//   return ({
+//       // type:ActionTypes.ADD_TODO,
+//       payload:request
+//   })
 // }
+
+async function handleSubmit(event) {
+  console.log("HELLO WORLD FROM SUBMIT");
+  event.preventDefault();
+  await axios.post(
+    'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default',
+    { 
+      key1: "1",
+      key2: "Hello world!"
+    }
+  );
+}
 
 
 // https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default
