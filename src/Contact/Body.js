@@ -18,6 +18,8 @@ import axios from 'axios';
 //   }
 // }));
 
+
+
 const StyledButton = styled(Button)`
   background-color: #0074d9;
   color: #fff;
@@ -28,86 +30,115 @@ const StyledButton = styled(Button)`
   }
 `
 
-export function Body() {
-  return (
-    <Box display="flex" justifyContent="center" height="30rem">
-      <Box>
-        <p>This area for image</p>
+export class Body extends React.Component {
+  render() {
+    return (
+      <Box display="flex" justifyContent="center" height="30rem">
+        <ContactForm />
       </Box>
-      <ContactForm />
-    </Box>
-  )
+    )
+  }
+
+
+
+
 }
 
-function ContactForm() {
+class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      message: '',
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit = () => {
+
+    //"Random" id to apply to message, big number to maybe avoid duplicates. 
+    // Definitely wouldn't be final implementation
+    // DynamoDB expects a string
+    const SId = (Math.floor(Math.random() * 10000000000)).toString();
+
+
+    // data to be sent to lambda through api
+    const data = {
+      'MessageID': SId,
+      "Name": this.state.name,
+      "Email": this.state.email,
+      'Message': this.state.message,
+    };
+
+    //Notify user that message was sent
+
+
+    //request for the api
+    var request = fetch('https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage', {
+      mode: 'cors',
+      method: 'POST', 'OPTIONS': {
+        "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers",
+        "Access-Control-Allow-Methods": "POST",
+      },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then((data) => console.log(data))
+      .catch(error => console.log('Error while adding:', error));
+    return ({
+      payload: request
+    })
+  }
+
   // const classes = useStyles();
-
-  return (
-    <Box p={2}>
-      <Box pt={2}>
-        <Typography variant="h4">
-          Thank you for reaching out!
+  render() {
+    return (
+      <Box p={2}>
+        <Box pt={2}>
+          <Typography variant="h4">
+            Thank you for reaching out!
       </Typography>
-      </Box>
-      <Box pt={2}>
-        <Typography variant="h5">
-          Provide us with the following information and we'll get back to you as soon as we can.
+        </Box>
+        <Box pt={2}>
+          <Typography variant="h5">
+            Provide us with the following information and we'll get back to you as soon as we can.
       </Typography>
+        </Box>
+        <Box pt={4}>
+          <TextField variant="outlined" label="Name" name="name" required onChange={this.handleChange}/>
+        </Box>
+        <Box pt={4}>
+          <TextField variant="outlined" label="Email" name="email" required 
+            onChange={this.handleChange} helperText="We don't share your email with third parties" />
+        </Box>
+        <Box pt={4} >
+          <TextField
+            variant="outlined"
+            label="What can we help you with?"
+            name="message"
+            onChange={this.handleChange}
+            fullWidth={true}
+            required
+            multiline
+            rows={5} />
+        </Box>
+        <Box pt={4} >
+          <StyledButton type="submit" endIcon={<SendIcon />} onClick={this.handleSubmit} >Send</StyledButton>
+        </Box>
       </Box>
-      <Box pt={4}>
-        <TextField variant="outlined" label="Name" required />
-      </Box>
-      <Box pt={4}>
-        <TextField variant="outlined" label="Email" required helperText="We don't share your email with third parties" />
-      </Box>
-      <Box pt={4} >
-        <TextField
-          variant="outlined"
-          label="What can we help you with?"
-          fullWidth={true}
-          required
-          multiline
-          rows={5} />
-      </Box>
-      <Box pt={4} >
-        <StyledButton type="submit" endIcon={<SendIcon />} onClick={handleSubmit} >Send</StyledButton>
-      </Box>
-    </Box>
-  )
+    )
+  }
 }
-
-// function handleSubmit(item){
-//   var request = fetch('https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',{
-//       method: 'POST',
-//       headers:{
-//           'Content-Type': 'application/json',
-//           'Access-Control-Allow-Origin': '*'
-//       }
-//   })
-//   .then(response => response.json())
-//   .then((data) => { return data; } )
-//   .catch(error => console.log('Error while adding:', error));
-//   return ({
-//       // type:ActionTypes.ADD_TODO,
-//       payload:request
-//   })
-// }
-
-async function handleSubmit(event) {
-  console.log("HELLO WORLD FROM SUBMIT");
-  event.preventDefault();
-  const options = {
-    'Access-Control-Allow-Origin': '*' };
-  await axios.post(
-    'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',
-    { 
-      key1: "1",
-      key2: "Hello world!"
-    },
-    options
-  );
-}
-
 
 // https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default
 

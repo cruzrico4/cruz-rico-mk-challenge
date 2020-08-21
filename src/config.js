@@ -12,7 +12,7 @@ window._config = {
 
   api: { 
 
-      invokeUrl: 'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod, 
+      invokeUrl: 'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod, 
 
   } 
 
