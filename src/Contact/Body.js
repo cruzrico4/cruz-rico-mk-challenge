@@ -76,12 +76,12 @@ function ContactForm() {
   )
 }
 
-// export function handleSubmit(item){
-//   var request = fetch(`API-URL?desc=${item}`,{
+// function handleSubmit(item){
+//   var request = fetch('https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',{
 //       method: 'POST',
 //       headers:{
 //           'Content-Type': 'application/json',
-//           'x-api-key': 'API-KEY'
+//           'Access-Control-Allow-Origin': '*'
 //       }
 //   })
 //   .then(response => response.json())
@@ -96,12 +96,15 @@ function ContactForm() {
 async function handleSubmit(event) {
   console.log("HELLO WORLD FROM SUBMIT");
   event.preventDefault();
+  const options = {
+    'Access-Control-Allow-Origin': '*' };
   await axios.post(
     'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',
     { 
       key1: "1",
       key2: "Hello world!"
-    }
+    },
+    options
   );
 }
 
