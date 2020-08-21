@@ -97,7 +97,7 @@ async function handleSubmit(event) {
   console.log("HELLO WORLD FROM SUBMIT");
   event.preventDefault();
   await axios.post(
-    'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default',
+    'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage',
     { 
       key1: "1",
       key2: "Hello world!"
