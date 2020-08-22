@@ -1,24 +1,28 @@
 import React from 'react'
 import Box from '@material-ui/core/Box';
 import { Typography, TextField, Button } from '@material-ui/core';
-import { makeStyles, withTheme } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
-import axios from 'axios';
 
-
-//Style
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     background: "#0074d9",
-//     color: "white",
-//   },
-//   '&:hover': {
-//     background: "#0074d9",
-//   }
-// }));
-
-
+/**
+ * Body.js contains code that renders the body of the contact page.
+ * Classes: Body, ContactForm
+ * 
+ * Body: the main class for this file, renders the body and returns its contents
+ *    Notes: This class exists as a wrapper for ContactForm because there were 
+ *      originally to be other parts of the body that did not include the 
+ *      ContactForm, like accompanying images to make the form more friendly 
+ *      to the user.
+ * 
+ * ContactForm: Renders and returns the contact form portion of the body. This
+ *    Methods and Constructor:
+ *      constructor: creates the initial state variables for react to use in
+ *        the ContactForm
+ *      handleChange: handles the change of the state variable fields by setting
+ *        them to the relevant state variables
+ *      handleSubmit: handles the submit click event, submits data to API for 
+ *        lambda function to send email and update dynamoDB
+ */
 
 const StyledButton = styled(Button)`
   background-color: #0074d9;
@@ -38,10 +42,6 @@ export class Body extends React.Component {
       </Box>
     )
   }
-
-
-
-
 }
 
 class ContactForm extends React.Component {
@@ -100,7 +100,6 @@ class ContactForm extends React.Component {
     })
   }
 
-  // const classes = useStyles();
   render() {
     return (
       <Box p={2}>
@@ -115,10 +114,10 @@ class ContactForm extends React.Component {
       </Typography>
         </Box>
         <Box pt={4}>
-          <TextField variant="outlined" label="Name" name="name" required onChange={this.handleChange}/>
+          <TextField variant="outlined" label="Name" name="name" required onChange={this.handleChange} />
         </Box>
         <Box pt={4}>
-          <TextField variant="outlined" label="Email" name="email" required 
+          <TextField variant="outlined" label="Email" name="email" required
             onChange={this.handleChange} helperText="We don't share your email with third parties" />
         </Box>
         <Box pt={4} >

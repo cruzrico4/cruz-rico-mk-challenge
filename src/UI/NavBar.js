@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 export function NavBar() {
   return (
-    <AppBar position="static" color="white">
+    <AppBar position="static" color="transparent">
       <Toolbar>
         <Box flexGrow={1}>
           <h1>MK Contact Form</h1>

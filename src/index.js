@@ -7,13 +7,16 @@ import config from './aws-exports';
 import Amplify, { API } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
+/**
+ * The top-level file of the app. Certain things I want to add, but didn't have enough time:
+ *  email is not checked yet
+ *  UI does not inform user that email was sent yet
+ *  UI does not inform user that email could not be sent, or failed to send
+ *  
+ */
+
 // Amplify.configure(config);
 Amplify.configure(awsconfig);
-
-API.get('SendMessage-API', 
-  'https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage').then(res=>{
-    console.log(res)
-});
 
 ReactDOM.render(
   <React.StrictMode>

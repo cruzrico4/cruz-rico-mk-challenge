@@ -1,16 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import Box from '@material-ui/core/Box'
-import Spacing from '@material-ui/system'
-
-import LoginWindow from './Login/LoginWindow.js'
-import MKContact from './Contact/MKContact.js'
-
-import { createMuiTheme, Typography, Card } from '@material-ui/core'
-import { sizing } from '@material-ui/system'
+import MKContact from './Contact/MKContact.js';
+import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core';
-
-import { withAuthenticator, AmplifyAuthenticator, AmplifySignIn, AmplifySignUp } from '@aws-amplify/ui-react'
+import {  AmplifyAuthenticator, AmplifySignIn, AmplifySignUp } from '@aws-amplify/ui-react'
 
 //Theme
 const theme = createMuiTheme({
