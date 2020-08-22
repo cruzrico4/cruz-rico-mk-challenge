@@ -9,9 +9,6 @@ import awsconfig from './aws-exports';
 
 /**
  * The top-level file of the app. Certain things I want to add, but didn't have enough time:
- *  email is not checked yet
- *  UI does not inform user that email was sent yet
- *  UI does not inform user that email could not be sent, or failed to send
  *  
  */
 

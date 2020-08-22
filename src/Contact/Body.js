@@ -1,8 +1,9 @@
 import React from 'react'
 import Box from '@material-ui/core/Box';
-import { Typography, TextField, Button } from '@material-ui/core';
+import { Typography, TextField, Button, Fade } from '@material-ui/core';
 import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
+
 
 /**
  * Body.js contains code that renders the body of the contact page.
@@ -51,7 +52,22 @@ class ContactForm extends React.Component {
       name: '',
       email: '',
       message: '',
+      uiMessage: '',
+      successMessage: 'Yay! We got your message, and we\'ll get back to you ASAP!',
+      messageColor: '#f00',
     };
+  }
+
+  displayError = (err) => {
+    this.setState({ uiMessage: err.message,
+      messageColor: '#e84435' });
+    console.log("Something went wrong!");
+  }
+  
+  //Displays
+  displaySuccess = () => {
+    this.setState({uiMessage: this.state.successMessage,
+      messageColor: '#0074d9'})
   }
 
   handleChange = (e) => {
@@ -76,10 +92,8 @@ class ContactForm extends React.Component {
       'Message': this.state.message,
     };
 
-    //Notify user that message was sent
-
-
     //request for the api
+
     var request = fetch('https://30qa72liq1.execute-api.us-west-2.amazonaws.com/default/SendMessage', {
       mode: 'cors',
       method: 'POST', 'OPTIONS': {
@@ -93,11 +107,30 @@ class ContactForm extends React.Component {
       body: JSON.stringify(data),
     })
       .then(response => response.json())
-      .then((data) => console.log(data))
-      .catch(error => console.log('Error while adding:', error));
+      .then(this.checkError)
+      .then(this.displaySuccess)
+      .catch(error => {
+        this.displayError(error);
+        console.log('Error while adding:', error);
+      });
+
     return ({
       payload: request
     })
+  }
+
+  //Checks for errors in response json since fetch() only throws errors on disconnects
+  checkError(data) {
+    console.log("Checking errors")
+    console.log(data);
+    if (data.err) {
+      console.log("ERROR");
+      throw Error(data.err.message);
+    }
+    else {
+      console.log("No errors found")
+      return data;
+    }
   }
 
   render() {
@@ -134,6 +167,8 @@ class ContactForm extends React.Component {
         <Box pt={4} >
           <StyledButton type="submit" endIcon={<SendIcon />} onClick={this.handleSubmit} >Send</StyledButton>
         </Box>
+        {this.state.uiMessage &&
+          <h3 className="error" style={{ color: this.state.messageColor }}> {this.state.uiMessage} </h3>}
       </Box>
     )
   }
