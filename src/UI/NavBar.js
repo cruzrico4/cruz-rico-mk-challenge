@@ -6,13 +6,13 @@ import Button from '@material-ui/core/Button';
 
 export function NavBar() {
   return (
-    <AppBar position="static" color="transparent">
+    <AppBar color={"#FFFFFF"}  >
       <Toolbar>
         <Box flexGrow={1}>
           <h1>MK Contact Form</h1>
         </Box>
         <Button edge="end" p={0}>
-          <AmplifySignOut color="black"/>
+          <AmplifySignOut />
         </Button>
       </Toolbar>
     </AppBar>

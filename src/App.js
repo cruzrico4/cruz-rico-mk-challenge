@@ -10,6 +10,9 @@ const theme = createMuiTheme({
   shape: {
     borderRadius: 0,
   },
+  bgColor: {
+    backgroundColor: "#5EB2DB",
+  },
 });
 
 function App() {
