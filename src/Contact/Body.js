@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@material-ui/core/Box';
-import { Typography, TextField, Button, Fade } from '@material-ui/core';
+import { Typography, TextField, Button, Fade, TableRow, TableCell, Table, TableBody } from '@material-ui/core';
 import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
 
@@ -148,13 +148,23 @@ export class Body extends React.Component {
   }
   render() {
     return (
-      <Box display="flex" justifyContent="center" height="40rem" border={10} pt={10} borderColor={"#5EB2DB"} bgcolor={"#5EB2DB"}>
-        <Box display="block" flexGrow={.6}  pt={10} pr={4} >
-          <AirplaneGuy />
-        </Box>
-        <Box display="block" bgcolor={"#FFFFFF"}>
-          <ContactForm />
-        </Box>
+      <Box pt={10} pl={5} bgcolor={"#5EB2DB"}>
+        <Table display="inline-table" width="100%" >
+          <TableBody>
+            <TableRow>
+              <TableCell width="20%" pr={4}>
+                <Box display="block" pt={10} >
+                  <AirplaneGuy />
+                </Box>
+              </TableCell>
+              <TableCell width="50%">
+                <Box display="block" width="80%" my={5} bgcolor={"#FFFFFF"}>
+                  <ContactForm />
+                </Box>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </Box>
     )
   }
